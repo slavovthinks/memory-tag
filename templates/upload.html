@@ -103,12 +103,12 @@ $('.wrapper').height($(window).height());
 	})
 </script>
 
-<script src="js/vendor/jquery.ui.widget.js"></script>
-<script src="js/jquery.iframe-transport.js"></script>
-<script src="js/jquery.fileupload.js"></script>
-<script src="js/jquery.fileupload-process.js"></script>
-<script src="js/jquery.fileupload-image.js"></script>
-<script src="js/jquery.fileupload-validate.js"></script>
+<script src="/js/vendor/jquery.ui.widget.js"></script>
+<script src="/js/jquery.iframe-transport.js"></script>
+<script src="/js/jquery.fileupload.js"></script>
+<script src="/js/jquery.fileupload-process.js"></script>
+<script src="/js/jquery.fileupload-image.js"></script>
+<script src="/js/jquery.fileupload-validate.js"></script>
 
 <script>
 	/*jslint unparam: true, regexp: true */
@@ -116,7 +116,7 @@ $('.wrapper').height($(window).height());
 	$(function () {
 		'use strict';
 		// Change this to the location of your server-side upload handler:
-		var url = 'http://localhost:3000/upload_media',
+		var url = window.location.href +'/upload_media',
 			uploadButton = $('<button/>')
 				.addClass('btn btn-primary')
 				.prop('disabled', true)
@@ -180,8 +180,6 @@ $('.wrapper').height($(window).height());
 					.prop('disabled', !!data.files.error);
 			}
 		}).on('fileuploadprogressall', function (e, data) {
-			console.log('dataloaded'+data.loaded);
-			console.log('datatotal'+data.total);
 			var progress = parseInt(data.loaded / data.total * 100, 10);
 			$('#progress .progress-bar').css(
 				'width',

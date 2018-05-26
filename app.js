@@ -7,6 +7,11 @@ const app = express()
 const nunjucks = require('nunjucks')
 const shortID = require('shortid');
 
+// Require controller modules.
+const uploadController = require('./controllers/uploadController');
+const { ProductionVideo } = require('./models')
+const { Image } = require('./models')
+
 // const testRoute = require('./routes/test')
 const uploadRoute = require('./routes/uploadRoute')
 const homeRoute = require('./routes/homeRoute');
@@ -16,8 +21,7 @@ nunjucks.configure('templates', {
   autoescape: true,
   express: app
 })
-<<<<<<< HEAD
-=======
+
 
 // configure upload middleware
 upload.configure({
@@ -25,10 +29,11 @@ upload.configure({
     uploadUrl: '/uploads',
     imageVersions: {
         thumbnail: {
-            width: 80,
+            width: 120,
             height: 80
         }
-    }
+    },
+    quality: 100
 });
 
 // parse application/x-www-form-urlencoded
@@ -57,10 +62,21 @@ upload.on('begin', function (fileInfo) {
 });
 
 upload.on('end', function (fileInfo, req, res) {
-    console.log(fileInfo);
+    var fullpath = __dirname + "/uploads/" + fileInfo.name;
+    Image.create({
+        MemoId: req.params.id,
+        filename: fileInfo.name,
+        path: fullpath
+    })
+        .then(() => Image.findOrCreate({where: {MemoId: req.params.id} }))
+.spread((image, created) => {
+        // console.log(image.get({
+        // plain: true
+        // }))
+    })
 });
 
-app.use('/upload_media', function(req, res, next){
+app.post('/:id/upload_media', function(req, res, next){
     upload.fileHandler({
         uploadDir: function () {
             return __dirname + '/public/uploads/'
@@ -75,10 +91,13 @@ app.use('/upload_media', function(req, res, next){
 app.use(cors())
 
 // JS CSS AND ASSETS
->>>>>>> master
+
 app.use(express.static('static'))
 
 app.use('/', homeRoute)
-app.use('/upload', uploadRoute)
+// app.use('/upload', uploadRoute)
+
+app.get('/:id', uploadController.index);
+
 // app.use('/upload_media', uploadRoute)
 app.listen(config.port, () => console.log(`listening on port ${config.port}`))
