@@ -11,4 +11,11 @@ nunjucks.configure('templates', {
 const testRoute = require('./routes/test')
 
 app.use('/souvenirs', testRoute)
+app.get('/', (req, res) => res.send(
+    'Hello World! EDITED' +
+    '<a href="/page">link test</a>'
+))
+app.get('/page', (req, res) => res.send(
+    '<a href="/">Go to homepage</a>'
+))
 app.listen(config.port, () => console.log(`listening on port ${config.port}`))
