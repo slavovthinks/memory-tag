@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 // Require controller modules.
-var upload_controller = require('../controllers/uploadController');
+const uploadController = require('../controllers/uploadController');
 
 
-router.get('/', upload_controller.index);
+router.get('/', uploadController.index);
 
 module.exports = router;
