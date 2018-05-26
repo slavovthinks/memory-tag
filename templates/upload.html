@@ -19,7 +19,7 @@
 
 		.first-row{
 			background-color: rgb(255,194,34);
-			height: 33%;
+			height: 100%;
 		}
 		.second-row {
 			background-color: rgb(0,156,59);
@@ -32,6 +32,13 @@
 			height: 33%;
 
 		}
+
+		body {
+			overflow: hidden;
+		}
+		.content-text{
+			margin-left: 30%;
+		}
 </style>
 <script>
 $(document).ready(function () {
@@ -43,18 +50,19 @@ $('.wrapper').height($(window).height());
 	})
 </script>
 
+<script src="/js/jquery.dm-uploader.js"></script>
 
 </head>
 <body>
-<div class="wrapper">
+<div class="container-fluid wrapper">
 	<div class="row first-row">
+		<div class="row-content">
+			<p class="content-text">1. Upload</p>
+			<input type="file">
+		</div>
 	</div>
 
-	<div class="row second-row">
-	</div>
 
-	<div class="row third-row"> 
-	</div>
 </div>
 </body>
 </html>
