@@ -1,27 +1,26 @@
-$(document).ready(function () {
-    var wHeight = $(window).height();
-    var titleHeight = $('.title-row').height();
-    var uploadsHeight = wHeight - titleHeight - 150;
-    $('.upload-canvas').height(uploadsHeight);
-
-    $(window).resize(function () {
-        $('.upload-canvas').height(uploadsHeight);
-
-    });
-    $('.second-page').toggle();
-
-    $('#firstToSecond, .upload-canvas').on('touchstart click', function () {
-        openOrderPage();
-    })
-});
-
-
 function openOrderPage() {
-    /*   $('.first-page').css('opacity', 0);
-     $('.second-page').toggle();
-     $('.second-page').css('opacity', 1);
-     $('.content-text').html('2. Order photos');*/
+    setTimeout(function () {
+        $('.first-page').css('opacity', 0);
+        $('.first-page').hide();
+        $('.second-page').show();
+        $('.second-page').css('opacity', 1);
+        $('.content-text').html('2. Order photos');
+        var myList = $('.sorter');
+
+        $('canvas').each(function (i) {
+            if (i < 4) {
+                $('.sorter li:eq(' + i + ') span').append($(this));
+            }
+        });
+        $('.img-content').each(function() {
+            if (!$(this).html() )
+                $(this).parent().remove();
+        })
+        //$('li').each(function() { if ($(this).html() == '') $(this).remove() })
+    }, 500);
+
 }
+
 $(function () {
     $('ul.sorter').amigoSorter();
 });
@@ -79,6 +78,7 @@ $(function () {
         previewMaxHeight: 100,
         previewCrop: true
     }).on('fileuploadadd', function (e, data) {
+        $('.progress').removeClass('hidden');
         data.context = $('<div/>').appendTo('#files');
         $.each(data.files, function (index, file) {
             var node = $('<p/>')
@@ -140,4 +140,17 @@ $(function () {
         });
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
+}).on('fileuploadstop', function (e, data) {
+    openOrderPage()
 });
+
+$('#fileupload').bind('fileuploadprogress', function (e, data) {
+    // Log the current bitrate for this upload:
+    console.log(data.bitrate);
+});
+
+$('.progress-bar').on('stylechanged', function () {
+    console.log($(this).css('width'));
+    console.log('css changed');
+});
+
