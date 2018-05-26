@@ -16,8 +16,6 @@ nunjucks.configure('templates', {
   autoescape: true,
   express: app
 })
-<<<<<<< HEAD
-=======
 
 // configure upload middleware
 upload.configure({
@@ -75,7 +73,6 @@ app.use('/upload_media', function(req, res, next){
 app.use(cors())
 
 // JS CSS AND ASSETS
->>>>>>> master
 app.use(express.static('static'))
 
 app.use('/', homeRoute)
