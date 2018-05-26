@@ -10,6 +10,5 @@ nunjucks.configure('templates', {
 
 const testRoute = require('./routes/test')
 
-app.use('/test', testRoute)
-
+app.use('/souvenirs', testRoute)
 app.listen(config.port, () => console.log(`listening on port ${config.port}`))

@@ -3,9 +3,9 @@ module.exports = {
     dialect: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: '',
-    password: '',
-    database: '',
+    username: 'root',
+    password: 'root',
+    database: 'memory_tag',
     pool: {
       max: 5,
       min: 0,
