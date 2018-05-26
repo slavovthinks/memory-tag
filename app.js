@@ -13,7 +13,8 @@ nunjucks.configure('templates', {
   autoescape: true,
   express: app
 })
-// app.use(express.static('static')) // TODO NO IDEA WHY THIS IS HERE AND WHAT IT DOES
+// JS CSS AND ASSETS
+app.use(express.static('static'))
 
 app.use('/', homeRoute)
 app.use('/upload', uploadRoute)
