@@ -1,68 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Upload files</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-	<style>
+    <title>Upload files</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/theme-default.css">
 
-		.wrapper {
-			width: 100%;
-		}
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/js/amigo-sorter.js"></script>
 
-		.row {
-		}
 
-		.first-row{
-			background-color: rgb(255,194,34);
-			height: 100%;
-		}
-		.second-row {
-			background-color: rgb(0,156,59);
-			height: 34%;
+    <style>
 
-		}
 
-		.third-row {
-			background-color: rgb(50,153,204);
-			height: 33%;
+        .content-text {
+            text-align: center;
+            transition: 1s ease all;
+        }
 
-		}
+        .yellow-body {
+            background-color: rgb(255, 194, 34);
+            transition: 1s ease all;
+        }
 
-		body {
-			overflow: hidden;
-		}
-		.content-text{
-			margin-left: 30%;
-		}
-</style>
-<script>
-$(document).ready(function () {
-	$('.wrapper').height($(window).height());
-});
-$(window).resize(function () {
-$('.wrapper').height($(window).height());
+        .green-body {
+            background-color: rgb(0, 156, 59);
+            transition: 1s ease all;
+        }
 
-	})
-</script>
+        .first-page {
+            transition: 1s ease all;
+        }
 
-<script src="/js/jquery.dm-uploader.js"></script>
+        .second-page {
+            opacity: 0;
+            transition: 1s ease all;
+        }
+
+        .page-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .page-container {
+            position: absolute;
+            top: 0;
+            padding: 10px 30px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.wrapper').height($(window).height());
+
+            $(window).resize(function () {
+                $('.wrapper').height($(window).height());
+
+            });
+            $('.second-page').toggle();
+
+        });
+        $('#firstToSecond').on('click', function () {
+            $('body').removeClass('yellow-body');
+            $('body').addClass('green-body');
+            $('.first-page').css('opacity', 0);
+            $('.second-page').css('opacity', 1);
+            $('.second-page').toggle();
+            $('.content-text').html('2. Order photos');
+            $('.content-text').css('color', '#ffffff');
+        });
+        
+        $(function () {
+            $('ul.sorter').amigoSorter();
+        });
+
+        $(function () {
+            $('ul.sorter').amigoSorter({
+                li_helper: "li_helper",
+                li_empty: "empty",
+                onTouchStart: function () {
+                },
+                onTouchMove: function () {
+                },
+                onTouchEnd: function () {
+                }
+            });
+        });
+
+    </script>
+
 
 </head>
-<body>
-<div class="container-fluid wrapper">
-	<div class="row first-row">
-		<div class="row-content">
-			<p class="content-text">1. Upload</p>
-			<input type="file">
-		</div>
-	</div>
+<body class="yellow-body">
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="content-text">1. Upload</h1>
+    </div>
+</div>
+<div class="page-wrapper">
+    <div class="first-page page-container">
+        <div class="row">
+            <div class="col-sm-12">
+                <a class="btn btn-primary" id="firstToSecond">CLick me</a>
+            </div>
+        </div>
+    </div>
 
+    <div class="second-page page-container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div data-role="content" data-theme="c">
 
+                    <ul class="sorter">
+                        <li>
+                            <span>Star Trek</span>
+                        </li>
+                        <li>
+                            <span>Star Wars</span>
+                        </li>
+                        <li>
+                            <span>Minory Report</span>
+                        </li>
+                        <li>
+                            <span>Alien</span>
+                        </li>
+                        <li>
+                            <span>Prometeus</span>
+                        </li>
+
+                        </li>
+                        <li>
+                            <span>Fantasy</span>
+                        <li>
+                            <span>Lord of the Rings</span>
+                        </li>
+                        <li>
+                            <span>Game of Thrones</span>
+                        </li>
+                        </li>
+                        <li>
+                            <span>Bondiana</span>
+                        <li>
+                            <span>Casino Royal</span>
+                        </li>
+                        <li>
+                            <span>Quantum of Solace</span>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
