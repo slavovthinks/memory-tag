@@ -15,5 +15,5 @@ module.exports = {
         logging: false,
         benchmark: false
     },
-    port: 4500
+    port: 3000
 }
