@@ -9,6 +9,8 @@ nunjucks.configure('templates', {
 })
 
 const testRoute = require('./routes/test')
+const uploadRoute = require('./routes/upload')
 
 app.use('/souvenirs', testRoute)
+app.get('/upload', uploadRoute)
 app.listen(config.port, () => console.log(`listening on port ${config.port}`))
