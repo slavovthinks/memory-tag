@@ -5,26 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/theme-default.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
 
     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/js/amigo-sorter.js"></script>
 
 
     <style>
-
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: #fff;
+        }
 
         .content-text {
             text-align: center;
             transition: 1s ease all;
+            color: #ffffff;
         }
 
-        .yellow-body {
-            background-color: rgb(255, 194, 34);
+        .grey-body {
+            background-color: rgb(59, 60, 78);
             transition: 1s ease all;
         }
 
         .green-body {
-            background-color: rgb(0, 156, 59);
+            background-color: rgb(59, 60, 78);
             transition: 1s ease all;
         }
 
@@ -46,29 +52,71 @@
             position: absolute;
             top: 0;
             padding: 10px 30px;
+            width: 100%;;
+        }
+
+        .title-row {
+            width: 100%;;
+        }
+
+        .uploadButton {
+            width: 100%;
+            background-color: rgb(38, 38, 50);
+            color: #fff;
+            padding: 15px 0;
+        }
+
+        #firstToSecond {
+            margin-top: 60px;
+        }
+        
+        #secondToTHird {
+            margin-top: 5px;
+        }
+
+        .upload-canvas {
+            border: .25rem dashed #a8a8a8;
+            border-radius: 10px;
+            margin: 3px;
+        }
+
+        .green-cloud {
+            color: rgb(79, 201, 127);
+            font-size: 115px;;
+            margin-top: 15%;
+        }
+
+        .light-text {
+            color: #f0f0f0;
+            font-size: 24px;
+            padding-top: 20px;
         }
     </style>
     <script>
         $(document).ready(function () {
-            $('.wrapper').height($(window).height());
+            var wHeight = $(window).height();
+            var titleHeight = $('.title-row').height();
+            var uploadsHeight = wHeight - titleHeight - 150;
+            $('.upload-canvas').height(uploadsHeight);
 
             $(window).resize(function () {
-                $('.wrapper').height($(window).height());
+                $('.upload-canvas').height(uploadsHeight);
 
             });
             $('.second-page').toggle();
 
+            $('#firstToSecond, .upload-canvas').on('touchstart click', function () {
+                openOrderPage();
+            })
         });
-        $('#firstToSecond').on('click', function () {
-            $('body').removeClass('yellow-body');
-            $('body').addClass('green-body');
+
+
+        function openOrderPage() {
             $('.first-page').css('opacity', 0);
-            $('.second-page').css('opacity', 1);
             $('.second-page').toggle();
+            $('.second-page').css('opacity', 1);
             $('.content-text').html('2. Order photos');
-            $('.content-text').css('color', '#ffffff');
-        });
-        
+        }
         $(function () {
             $('ul.sorter').amigoSorter();
         });
@@ -86,21 +134,36 @@
             });
         });
 
+
     </script>
 
 
 </head>
-<body class="yellow-body">
-<div class="row">
+<body class="grey-body">
+<div class="row title-row">
     <div class="col-sm-12">
         <h1 class="content-text">1. Upload</h1>
     </div>
 </div>
 <div class="page-wrapper">
     <div class="first-page page-container">
+        <div class="row upload-canvas">
+            <div class="col-sm-12 ">
+                <div class="">
+                    <p class="text-center">
+                        <span class="fas fa-cloud-upload-alt green-cloud"></span>
+                    </p>
+
+                    <p class="text-center light-text">
+                        Upload the images, you'd like to share!
+                    </p>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
-                <a class="btn btn-primary" id="firstToSecond">CLick me</a>
+                <a class="btn uploadButton" id="firstToSecond"><span class="fas fa-cloud-upload-alt"></span> Upload
+                    images</a>
             </div>
         </div>
     </div>
@@ -126,31 +189,17 @@
                         <li>
                             <span>Prometeus</span>
                         </li>
-
-                        </li>
-                        <li>
-                            <span>Fantasy</span>
-                        <li>
-                            <span>Lord of the Rings</span>
-                        </li>
-                        <li>
-                            <span>Game of Thrones</span>
-                        </li>
-                        </li>
-                        <li>
-                            <span>Bondiana</span>
-                        <li>
-                            <span>Casino Royal</span>
-                        </li>
-                        <li>
-                            <span>Quantum of Solace</span>
-                        </li>
                     </ul>
-
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <a class="btn uploadButton" id="secondToTHird"><span class="fas fa-cloud-upload-alt"></span> Send images</a>
+            </div>
+        </div>
     </div>
+
 </div>
 </body>
 </html>
