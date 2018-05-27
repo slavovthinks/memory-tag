@@ -12,10 +12,8 @@ const uploadController = require('./controllers/uploadController');
 const { ProductionVideo } = require('./models')
 const { Image } = require('./models')
 
-// const testRoute = require('./routes/test')
 const uploadRoute = require('./routes/uploadRoute')
 const homeRoute = require('./routes/homeRoute');
-// var souvenirs = require('./routes/souvenirs');
 
 nunjucks.configure('templates', {
   autoescape: true,
@@ -94,9 +92,7 @@ app.use(cors())
 app.use(express.static('static'))
 
 app.use('/', homeRoute)
-// app.use('/upload', uploadRoute)
-
+app.post('/memocheckvideo', uploadController.memoCheckVideo);
 app.get('/:id', uploadController.index);
 
-// app.use('/upload_media', uploadRoute)
 app.listen(config.port, () => console.log(`listening on port ${config.port}`))

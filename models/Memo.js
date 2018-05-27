@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Memo = sequelize.define('Memo', {
-    url: DataTypes.TEXT,
+    video_tag: DataTypes.TEXT,
     user_email: DataTypes.STRING
   })
   // Memo.associate = models => {
