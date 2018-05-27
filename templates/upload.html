@@ -3,23 +3,18 @@
 <head>
     <title>Upload files</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <!-- Bootstrap styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!--integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="-->
-    <!--crossorigin="anonymous"></script>-->
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
-    <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
     <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
     <!-- The Canvas to Blob plugin is included for image resizing functionality -->
     <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
-    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
     <script src="/js/amigo-sorter.js"></script>
     <script src="/js/script.js"></script>
     <link rel="stylesheet" href="/css/fa.css">
     <link rel="stylesheet" href="/css/theme-default.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+
     <style>
         .fileinput-button {
             position: relative;
@@ -47,6 +42,8 @@
                 height: 100%;
             }
         }
+
+
     </style>
 
     <script src="js/vendor/jquery.ui.widget.js"></script>
@@ -77,20 +74,31 @@
                 saveData();
             });
 
+            $('#videoLink').on('touchend', function (e) {
+                e.preventDefault();
+                $('.shadowBackdrop').hide();
+                $('.second-page').hide();
+                $('.video-page').removeClass('hidden');
+                $('.content-text').html('Preview your video')
+            })
+
+            setTimeout(function () {
+                openUploadPage()
+            }, 2000)
+
         });
 
     </script>
 
 </head>
 <body class="grey-body">
-
-<div class="row title-row">
+<div class="row title-row hidden">
     <div class="col-sm-12">
-        <h1 class="content-text">1. Upload</h1>
+        <h1 class="content-text ">1. Upload</h1>
     </div>
 </div>
 <div class="page-wrapper">
-    <div class="first-page page-container">
+    <div class="first-page page-container hidden">
         <div class="row upload-canvas">
             <div class="col-sm-12 ">
                 <div class="">
@@ -109,6 +117,7 @@
                 <div id="progress" class="progress hidden">
                     <div class="progress-bar progress-bar-success"></div>
                 </div>
+
 
                 <!--<a class="btn uploadButton" id="firstToSecond"><span class="fas fa-cloud-upload-alt"></span> Upload-->
                 <!--images</a>-->
@@ -137,22 +146,37 @@
         </div>
     </div>
 
+    <div class="video-page hidden">
+        <div class="video-container">
+
+        </div>
+    </div>
+
 </div>
 
-<div class="shadowBackdrop">
-    <div class="message-area">
-        <span class="fas fa-check check-icon"></span>
+<div class="shadowBackdrop ">
+    <div class="message-area hidden">
+        <span class="fas fa-check check-icon hidden"></span>
+        <span class="fas fa-sync sync-icon fa-spin"></span>
 
-        <p class="success-modal-title">Congratulations</p>
-        <p class="success-modal-text">Your video has been successfully created.</p>
-        <p class="success-modal-text"><a class="custom-a" href="#">View now</a></p>
+        <p class="custom-modal-title loading-modal-title">In progress</p>
+
+        <p class="success-modal-text" id="progressText">Your video is being created now.</p>
+
+        <p class="success-modal-text"><a id="videoLink" class="custom-a hidden" href="#">View now</a></p>
+
         <div class="social-place">
             <span class="fab fa-facebook-f"></span>
             <span class="fab fa-twitter"></span>
             <span class="fab fa-instagram"></span>
         </div>
     </div>
+
+    <div class="empty-loader">
+        <span class="fa fa-spinner fa-spin"></span>
+    </div>
 </div>
+
 
 <div class="hidden">
 			<span class="btn btn-success fileinput-button">

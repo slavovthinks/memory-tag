@@ -11,169 +11,235 @@
  */
 
 body {
-  font-family: 'Raleway', sans-serif;
-  color: #fff;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
 }
 
 .content-text {
-  text-align: center;
-  transition: 1s ease all;
-  color: #ffffff;
+    text-align: center;
+    transition: 1s ease all;
+    color: #ffffff;
 }
 
 .grey-body {
-  background-color: rgb(59, 60, 78);
-  transition: 1s ease all;
+    background-color: rgb(59, 60, 78);
+    transition: 1s ease all;
 }
 
-
 .first-page {
-  transition: 1s ease all;
+    transition: 1s ease all;
 }
 
 .second-page {
-  opacity: 0;
-  transition: 1s ease all;
+    opacity: 0;
+    transition: 1s ease all;
 }
 
 .page-wrapper {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .page-container {
-  position: absolute;
-  top: 0;
-  padding: 10px 30px;
-  width: 100%;;
+    position: absolute;
+    top: 0;
+    padding: 10px 30px;
+    width: 100%;;
 }
 
 .title-row {
-  width: 100%;;
+    /*width: 100%;;*/
 }
 
 .uploadButton {
-  width: 100%;
-  background-color: rgb(38, 38, 50);
-  color: #fff;
-  padding: 15px 0;
+    width: 100%;
+    background-color: rgb(38, 38, 50);
+    color: #fff;
+    padding: 15px 0;
 }
 
 #firstToSecond {
-  margin-top: 60px;
+    margin-top: 60px;
 }
 
 #secondToTHird {
-  margin-top: 5px;
+    margin-top: 5px;
 }
 
 .upload-canvas {
-  border: .25rem dashed #a8a8a8;
-  border-radius: 10px;
-  margin: 3px;
+    border: .25rem dashed #a8a8a8;
+    border-radius: 10px;
+    margin: 50px 3px 3px;
+
 }
 
 .green-cloud {
-  color: rgb(79, 201, 127);
-  font-size: 115px;;
-  margin-top: 15%;
+    color: rgb(79, 201, 127);
+    font-size: 115px;;
+    margin-top: 15%;
 }
 
 .light-text {
-  color: #f0f0f0;
-  font-size: 24px;
-  padding-top: 20px;
+    color: #f0f0f0;
+    font-size: 24px;
+    padding-top: 20px;
 }
 
 .bar {
-  height: 18px;
-  color: rgb(79, 201, 127);
+    height: 18px;
+    color: rgb(79, 201, 127);
 }
 
 .fileinput-button {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
 }
+
 .fileinput-button input {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  opacity: 0;
-  -ms-filter: 'alpha(opacity=0)';
-  font-size: 200px !important;
-  direction: ltr;
-  cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px !important;
+    direction: ltr;
+    cursor: pointer;
 }
 
 .progress {
-  margin-top: 50px;
-  height: 35px;
+    margin-top: 50px;
+    height: 35px;
 }
 
 .shadowBackdrop {
-  background: rgba(255,255,255,.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 200;
+    background: rgba(255, 255, 255, .7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    transition: 1s ease all;
 }
 
 .message-area {
-  height: 400px;
-  background-color: rgb(38, 38, 50);
-  width: 80%;
-  margin: 30% auto auto;
-  border-radius: 6px;
+    height: 400px;
+    background-color: rgb(38, 38, 50);
+    width: 80%;
+    margin: 30% auto auto;
+    border-radius: 6px;
+    position: relative;
 }
 
 .check-icon {
-  font-size: 47px;
-  text-align: center;
-  margin: -36px auto auto 38%;
-  background-color: rgb(79, 201, 127);
-  padding: 15px;
-  border-radius: 50%;
-  border: 5px solid rgb(38, 38, 50);
+    font-size: 47px;
+    text-align: center;
+    margin: -36px auto auto 38%;
+    background-color: rgb(79, 201, 127);
+    padding: 15px;
+    border-radius: 50%;
+    border: 5px solid rgb(38, 38, 50);
+    transition: 1s ease all;
 }
 
+.sync-icon {
+    font-size: 44px;
+    text-align: center;
+    margin: -36px auto auto 38%;
+    background-color: rgb(255, 201, 14);
+    padding: 15px;
+    border-radius: 50%;
+    border: 5px solid rgb(38, 38, 50);
+    transition: 1s ease all;
+
+}
+
+.custom-modal-title {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 15px;
+    transition: 1s ease all;
+
+}
 
 .success-modal-title {
-  font-size: 25px;
-  text-align: center;
-  color: rgb(79, 201, 127);
-  margin-top: 15px;
+    color: rgb(79, 201, 127);
+    transition: 1s ease all;
+
 }
 
-.success-modal-text{
-  text-align: center;
-  margin-top: 20px;
-  font-size: 18px;
-  color: #fafafa;
+.loading-modal-title {
+    color: rgb(255, 201, 14);
+    transition: 1s ease all;
+
 }
 
-.custom-a{
-  color: #fff;
+.success-modal-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #fafafa;
+    transition: 1s ease all;
+
 }
 
-.social-place{
-  margin-top: 30%;
-  text-align: center;
+.custom-a {
+    color: #fff;
+    transition: 1s ease all;
+
 }
 
-.fa-facebook-f{
-  font-size: 30px;
-  padding: 10px;
+.social-place {
+position: absolute;
+    bottom: 4%;
+    left: 25%;
+    text-align: center;
+    transition: 1s ease all;
+
 }
-.fa-twitter{
-  font-size: 30px;
-  padding: 10px;
-  color: rgb(29,161,242);
+
+.fa-facebook-f {
+    font-size: 40px;
+    padding: 10px;
+    color: rgb(66, 103, 178);
+    transition: 1s ease all;
+
 }
-.fa-instagram{
-  font-size: 30px;
-  padding: 10px;
+
+.fa-twitter {
+    font-size: 40px;
+    padding: 10px;
+    color: rgb(29, 161, 242);
+}
+
+.fa-instagram {
+    font-size: 40px;
+    padding: 10px;
+    color: rgb(233, 156, 105);
+    transition: 1s ease all;
+
+}
+.removedOpacity{
+    opacity: 0;
+    transition: 1s ease all;
+}
+
+.video-container {
+    width: 90%;
+    margin: 25% auto 0;
+    padding: 15% 5%;
+    border: 0.25rem dashed #999;
+    border-radius: 10px;
+}
+
+.empty-loader {
+    text-align: center;
+    margin-top: 60%;
+}
+
+.fa-spinner {
+    color: rgb(59, 60, 78);
+    font-size: 60px;
 }
