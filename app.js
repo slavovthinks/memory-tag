@@ -21,7 +21,8 @@ nunjucks.configure('templates', {
   autoescape: true,
   express: app
 })
-
+<<<<<<< HEAD
+=======
 
 // configure upload middleware
 upload.configure({

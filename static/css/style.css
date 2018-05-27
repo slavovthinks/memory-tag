@@ -11,5 +11,120 @@
  */
 
 body {
-  padding-top: 60px;
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+}
+
+.content-text {
+  text-align: center;
+  transition: 1s ease all;
+  color: #ffffff;
+}
+
+.grey-body {
+  background-color: rgb(59, 60, 78);
+  transition: 1s ease all;
+}
+
+
+.first-page {
+  transition: 1s ease all;
+}
+
+.second-page {
+  opacity: 0;
+  transition: 1s ease all;
+}
+
+.page-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.page-container {
+  position: absolute;
+  top: 0;
+  padding: 10px 30px;
+  width: 100%;;
+}
+
+.title-row {
+  width: 100%;;
+}
+
+.uploadButton {
+  width: 100%;
+  background-color: rgb(38, 38, 50);
+  color: #fff;
+  padding: 15px 0;
+}
+
+#firstToSecond {
+  margin-top: 60px;
+}
+
+#secondToTHird {
+  margin-top: 5px;
+}
+
+.upload-canvas {
+  border: .25rem dashed #a8a8a8;
+  border-radius: 10px;
+  margin: 3px;
+}
+
+.green-cloud {
+  color: rgb(79, 201, 127);
+  font-size: 115px;;
+  margin-top: 15%;
+}
+
+.light-text {
+  color: #f0f0f0;
+  font-size: 24px;
+  padding-top: 20px;
+}
+
+.bar {
+  height: 18px;
+  color: rgb(79, 201, 127);
+}
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px !important;
+  direction: ltr;
+  cursor: pointer;
+}
+
+.progress {
+  margin-top: 50px;
+  height: 35px;
+}
+
+.shadowBackdrop {
+  background: rgba(255,255,255,.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+}
+
+.message-area {
+  height: 400px;
+  background-color: rgb(38, 38, 50);
+  width: 80%;
+  margin: 15% auto auto;
 }
