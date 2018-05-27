@@ -22,7 +22,6 @@ nunjucks.configure('templates', {
   express: app
 })
 
-
 // configure upload middleware
 upload.configure({
     uploadDir: __dirname + '/public/uploads',

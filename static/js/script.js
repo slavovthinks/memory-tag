@@ -48,6 +48,8 @@ function saveData() {
         //data.orderedPhotos.push(p);
     });
     //data.orderedPhotos.push({"maxIndex": $('.sorter li').length});
+    $('.shadowBackdrop').removeClass('hidden');
+    $('.shadowBackdrop').css('opacity', 1);
     $.ajax({
         type: "POST",
         url: 'dsa',
@@ -55,7 +57,7 @@ function saveData() {
         data: JSON.stringify(data),
         contentType: 'application/json',
         success: function(){
-
+            onVideoSuccess();
         }
     })
 }
@@ -87,7 +89,7 @@ $(function () {
 $(function () {
     'use strict';
     // Change this to the location of your server-side upload handler:
-    var url = 'http://localhost:3000/upload_media',
+    var url = window.location.href +'/upload_media',
         uploadButton = $('<button/>')
             .addClass('btn btn-primary')
             .prop('disabled', true)
@@ -190,3 +192,36 @@ $('#fileupload').bind('fileuploadprogress', function (e, data) {
     console.log(data.bitrate);
 });
 
+function onVideoSuccess() {
+    $('.check-icon').removeClass('hidden');
+    $('.sync-icon').addClass('hidden');
+    $('.sync-icon').addClass('removeOpacity');
+
+    $('.custom-modal-title').removeClass('loading-modal-title');
+    $('.custom-modal-title').addClass('success-modal-title');
+    $('.custom-modal-title').html('Success');
+    $('#progressText').html('Your video has been successfully created');
+    $('#videoLink').removeClass('hidden');
+
+}
+
+function openUploadPage() {
+    $('.fa-spinner').hide();
+    $('.shadowBackdrop').addClass('hidden');
+    $('.first-page').removeClass('hidden');
+    $('.title-row').removeClass('hidden');
+    $('.message-area').removeClass('hidden');
+}
+
+function openPreviewPage() {
+    $('.fa-spinner').hide();
+    $('.shadowBackdrop').addClass('hidden');
+    $('.video-page').removeClass('hidden');
+    $('.title-row').removeClass('hidden');
+    $('.content-text').html('Preview your video')
+}
+
+function getFirstParamFromUrl() {
+    var pathArray = window.location.pathname.split( '/' );
+    return pathArray[1];
+}
