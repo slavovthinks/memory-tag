@@ -26,6 +26,6 @@ models.sequelize = sequelize
 models.Sequelize = Sequelize
 
 // Only for dev env
-sequelize.sync({force: true})
+sequelize.sync({force: false})
 
 module.exports = models

@@ -1,7 +1,6 @@
 // uploadController
+const { Memo } = require('../models');
 exports.index = function(req, res) {
-    console.log(req.params.id);
-    createMemo(req);
     res.render('upload.html')
 };
 
@@ -10,15 +9,20 @@ exports.imageCreatePost = function(req, res) {
     res.send('NOT IMPLEMENTED: IMAGE create POST');
 };
 
-function createMemo(req) {
-    const { Memo } = require('../models');
-
-    Memo.create({ id: req.params.id })
-        .then(() => Memo.findOrCreate({where: {id: req.params.id} }))
-.spread((memo, created) => {
-        console.log(memo.get({
-        plain: true
-    }))
-    console.log(created);
+exports.memoCheckVideo = function(req, res) {
+    Memo.findById(req.body.id)
+        .then(memo => {
+        if(memo.video_tag) {
+            console.log('VLIZA1');
+            res.json({"status": "true", "video_tag": "MYVIDEOTAG"});
+        } else {
+            res.json({"status": "false", "video_tag": ""});
+        }
+    }).catch(() => {
+        res.json(404, { "message": "Not found"});
+            console.log('GRUM');
     });
-}
+};
+
+
+
