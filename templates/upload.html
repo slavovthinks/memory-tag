@@ -57,7 +57,7 @@
         $(document).ready(function () {
             var wHeight = $(window).height();
             var titleHeight = $('.title-row').height();
-            var uploadsHeight = wHeight - titleHeight - 150;
+            var uploadsHeight = wHeight - 200;
             $('.upload-canvas').height(uploadsHeight);
 
             $(window).resize(function () {
@@ -90,13 +90,15 @@
                 data: JSON.stringify(data),
                 contentType: 'application/json',
                 success: function (param) {
-                    openUploadPage();
                     if (param.status == 'true') {
                         openPreviewPage();
                         $('.video-container').html(param.video_tag);
                     } else {
                         openUploadPage();
                     }
+                },
+                error: function() {
+                    openUploadPage();
                 }
             });
             /* setTimeout(function () {
