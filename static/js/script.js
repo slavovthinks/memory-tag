@@ -36,21 +36,14 @@ function setFileNames() {
 }
 
 function saveData() {
-    var data = {orderedPhotos: []};
+    var data = {orderedPhotos: [], memoId: getFirstParamFromUrl()};
     $('.sorter li').each(function (i) {
         var f = {"fileName": $(this).attr('data-name'), "position": i};
-        //var p = {"position": i};
-        //f.name = 'fileName';
-        //f.fileName = $(this).attr('data-name');
-        //p.name = 'position';
-        //p.position = i;
         data.orderedPhotos.push(f );
-        //data.orderedPhotos.push(p);
     });
-    //data.orderedPhotos.push({"maxIndex": $('.sorter li').length});
     $.ajax({
         type: "POST",
-        url: 'dsa',
+        url: window.location.origin+'/order',
         dataType: 'json',
         data: JSON.stringify(data),
         contentType: 'application/json',
@@ -58,6 +51,11 @@ function saveData() {
 
         }
     })
+}
+
+function getFirstParamFromUrl() {
+    var pathArray = window.location.pathname.split( '/' );
+    return pathArray[1];
 }
 
 function openSuccessMessage() {
@@ -187,6 +185,5 @@ $(function () {
 
 $('#fileupload').bind('fileuploadprogress', function (e, data) {
     // Log the current bitrate for this upload:
-    console.log(data.bitrate);
 });
 
