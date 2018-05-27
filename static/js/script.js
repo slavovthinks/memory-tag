@@ -87,7 +87,7 @@ $(function () {
 $(function () {
     'use strict';
     // Change this to the location of your server-side upload handler:
-    var url = 'http://localhost:3000/upload_media',
+    var url = window.location.href +'/upload_media',
         uploadButton = $('<button/>')
             .addClass('btn btn-primary')
             .prop('disabled', true)

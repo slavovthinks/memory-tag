@@ -4,7 +4,7 @@ module.exports = {
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: 'dummy',
+        password: 'root',
         database: 'memory_tag',
         pool: {
             max: 5,

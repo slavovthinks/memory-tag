@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="/css/theme-default.css">
     <link rel="stylesheet" href="/css/style.css">
     <style>
-
         .fileinput-button {
             position: relative;
             overflow: hidden;
@@ -48,8 +47,6 @@
                 height: 100%;
             }
         }
-
-        /*Style for the input button END*/
     </style>
 
     <script src="js/vendor/jquery.ui.widget.js"></script>
@@ -81,34 +78,25 @@
             });
 
         });
-    </script>
 
-		/* Fixes for IE < 8 */
-		@media screen\9 {
-			.fileinput-button input {
-				filter: alpha(opacity=0);
-				font-size: 100%;
-				height: 100%;
-			}
-		}
-		/*Style for the input button END*/
-</style>
-<script>
-$(document).ready(function () {
-	$('.wrapper').height($(window).height());
-});
-$(window).resize(function () {
-$('.wrapper').height($(window).height());
+    </script>
 
 </head>
 <body class="grey-body">
 
-<script src="js/vendor/jquery.ui.widget.js"></script>
-<script src="js/jquery.iframe-transport.js"></script>
-<script src="js/jquery.fileupload.js"></script>
-<script src="js/jquery.fileupload-process.js"></script>
-<script src="js/jquery.fileupload-image.js"></script>
-<script src="js/jquery.fileupload-validate.js"></script>
+<div class="row title-row">
+    <div class="col-sm-12">
+        <h1 class="content-text">1. Upload</h1>
+    </div>
+</div>
+<div class="page-wrapper">
+    <div class="first-page page-container">
+        <div class="row upload-canvas">
+            <div class="col-sm-12 ">
+                <div class="">
+                    <p class="text-center">
+                        <span class="fas fa-cloud-upload-alt green-cloud"></span>
+                    </p>
 
                     <p class="text-center light-text">
                         Upload the images, you'd like to share!
@@ -153,7 +141,16 @@ $('.wrapper').height($(window).height());
 
 <div class="shadowBackdrop">
     <div class="message-area">
-        <span class="fas fa-check"></span>
+        <span class="fas fa-check check-icon"></span>
+
+        <p class="success-modal-title">Congratulations</p>
+        <p class="success-modal-text">Your video has been successfully created.</p>
+        <p class="success-modal-text"><a class="custom-a" href="#">View now</a></p>
+        <div class="social-place">
+            <span class="fab fa-facebook-f"></span>
+            <span class="fab fa-twitter"></span>
+            <span class="fab fa-instagram"></span>
+        </div>
     </div>
 </div>
 
