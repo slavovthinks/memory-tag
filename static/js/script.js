@@ -220,3 +220,8 @@ function openPreviewPage() {
     $('.title-row').removeClass('hidden');
     $('.content-text').html('Preview your video')
 }
+
+function getFirstParamFromUrl() {
+    var pathArray = window.location.pathname.split( '/' );
+    return pathArray[1];
+}

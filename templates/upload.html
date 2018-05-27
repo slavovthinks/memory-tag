@@ -82,10 +82,24 @@
                 $('.content-text').html('Preview your video')
             })
 
-            setTimeout(function () {
+			var data = {"id" : getFirstParamFromUrl()}
+			$.ajax({
+				type: "POST",
+				url: 'memocheckvideo',
+				dataType: 'json',
+				data: JSON.stringify(data),
+				contentType: 'application/json',
+				success: function(param){
+					openUploadPage();
+				},
+				error: function (param) {
+					openPreviewPage();
+				}
+			})
+           /* setTimeout(function () {
                 openUploadPage()
             }, 2000)
-
+*/
         });
 
     </script>
