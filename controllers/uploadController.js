@@ -19,6 +19,5 @@ function createMemo(req) {
         console.log(memo.get({
         plain: true
     }))
-    console.log(created);
     });
 }
