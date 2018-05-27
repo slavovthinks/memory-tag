@@ -36,26 +36,30 @@ function setFileNames() {
 }
 
 function saveData() {
-    var data = {orderedPhotos: [], memoId: getFirstParamFromUrl()};
+    var data = {orderedPhotos: []};
     $('.sorter li').each(function (i) {
         var f = {"fileName": $(this).attr('data-name'), "position": i};
+        //var p = {"position": i};
+        //f.name = 'fileName';
+        //f.fileName = $(this).attr('data-name');
+        //p.name = 'position';
+        //p.position = i;
         data.orderedPhotos.push(f );
+        //data.orderedPhotos.push(p);
     });
+    //data.orderedPhotos.push({"maxIndex": $('.sorter li').length});
+    $('.shadowBackdrop').removeClass('hidden');
+    $('.shadowBackdrop').css('opacity', 1);
     $.ajax({
         type: "POST",
-        url: window.location.origin+'/order',
+        url: 'dsa',
         dataType: 'json',
         data: JSON.stringify(data),
         contentType: 'application/json',
         success: function(){
-
+            onVideoSuccess();
         }
     })
-}
-
-function getFirstParamFromUrl() {
-    var pathArray = window.location.pathname.split( '/' );
-    return pathArray[1];
 }
 
 function openSuccessMessage() {
@@ -185,5 +189,34 @@ $(function () {
 
 $('#fileupload').bind('fileuploadprogress', function (e, data) {
     // Log the current bitrate for this upload:
+    console.log(data.bitrate);
 });
 
+function onVideoSuccess() {
+    $('.check-icon').removeClass('hidden');
+    $('.sync-icon').addClass('hidden');
+    $('.sync-icon').addClass('removeOpacity');
+
+    $('.custom-modal-title').removeClass('loading-modal-title');
+    $('.custom-modal-title').addClass('success-modal-title');
+    $('.custom-modal-title').html('Success');
+    $('#progressText').html('Your video has been successfully created');
+    $('#videoLink').removeClass('hidden');
+
+}
+
+function openUploadPage() {
+    $('.fa-spinner').hide();
+    $('.shadowBackdrop').addClass('hidden');
+    $('.first-page').removeClass('hidden');
+    $('.title-row').removeClass('hidden');
+    $('.message-area').removeClass('hidden');
+}
+
+function openPreviewPage() {
+    $('.fa-spinner').hide();
+    $('.shadowBackdrop').addClass('hidden');
+    $('.video-page').removeClass('hidden');
+    $('.title-row').removeClass('hidden');
+    $('.content-text').html('Preview your video')
+}
