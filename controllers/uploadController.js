@@ -14,7 +14,7 @@ exports.memoCheckVideo = function(req, res) {
         .then(memo => {
         if(memo.video_tag) {
             console.log('VLIZA1');
-            res.json({"status": "true", "video_tag": "MYVIDEOTAG"});
+            res.json({"status": "true", "video_tag": memo.video_tag});
         } else {
             res.json({"status": "false", "video_tag": ""});
         }
