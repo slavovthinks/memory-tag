@@ -1,3 +1,4 @@
+var fileNames = [];
 function openOrderPage() {
     setTimeout(function () {
         $('.first-page').css('opacity', 0);
@@ -6,18 +7,60 @@ function openOrderPage() {
         $('.second-page').css('opacity', 1);
         $('.content-text').html('2. Order photos');
         var myList = $('.sorter');
-
+        setFileNames();
         $('canvas').each(function (i) {
             if (i < 4) {
                 $('.sorter li:eq(' + i + ') span').append($(this));
+                $('.sorter li:eq(' + i + ')').attr('data-name', fileNames[i]);
             }
         });
-        $('.img-content').each(function() {
-            if (!$(this).html() )
+        $('.img-content').each(function () {
+            if (!$(this).html())
                 $(this).parent().remove();
-        })
-        //$('li').each(function() { if ($(this).html() == '') $(this).remove() })
+        });
     }, 500);
+
+
+}
+
+function setFileNames() {
+        var i = 0;
+        $('#files').children().each(function () {
+            if (i++ < 4) {
+                var fileName = $(this).children().prop('href');
+                fileName = fileName.substr(fileName.lastIndexOf('/') + 1, fileName.length);
+                fileNames.push(fileName);
+                console.log(fileName)
+            }
+        })
+}
+
+function saveData() {
+    var data = {orderedPhotos: []};
+    $('.sorter li').each(function (i) {
+        var f = {"fileName": $(this).attr('data-name'), "position": i};
+        //var p = {"position": i};
+        //f.name = 'fileName';
+        //f.fileName = $(this).attr('data-name');
+        //p.name = 'position';
+        //p.position = i;
+        data.orderedPhotos.push(f );
+        //data.orderedPhotos.push(p);
+    });
+    //data.orderedPhotos.push({"maxIndex": $('.sorter li').length});
+    $.ajax({
+        type: "POST",
+        url: 'dsa',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function(){
+
+        }
+    })
+}
+
+function openSuccessMessage() {
 
 }
 
@@ -109,8 +152,6 @@ $(function () {
                 .prop('disabled', !!data.files.error);
         }
     }).on('fileuploadprogressall', function (e, data) {
-        console.log('dataloaded' + data.loaded);
-        console.log('datatotal' + data.total);
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $('#progress .progress-bar').css(
             'width',
@@ -147,10 +188,5 @@ $(function () {
 $('#fileupload').bind('fileuploadprogress', function (e, data) {
     // Log the current bitrate for this upload:
     console.log(data.bitrate);
-});
-
-$('.progress-bar').on('stylechanged', function () {
-    console.log($(this).css('width'));
-    console.log('css changed');
 });
 

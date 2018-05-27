@@ -73,9 +73,13 @@
             $('.second-page').toggle();
 
             $('.upload-canvas').on('touchend', function () {
-                console.log('touchstart')
                 $('#fileupload').trigger('click');
             });
+            $('#secondToTHird').on('touchend', function () {
+                console.log('dsafds');
+                saveData();
+            });
+
         });
     </script>
 
@@ -119,20 +123,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div data-role="content" data-theme="c">
-
                     <ul class="sorter">
-                        <!--<li>-->
-                        <!--<span>Star Trek</span>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                        <!--<span>Star Wars</span>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                        <!--<span>Minory Report</span>-->
-                        <!--</li>-->
-                        <!--<li>-->
-                        <!--<span>Alien</span>-->
-                        <!--</li>-->
                         <li><span class="img-content"></span></li>
                         <li><span class="img-content"></span></li>
                         <li><span class="img-content"></span></li>
@@ -141,6 +132,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-sm-12">
                 <a class="btn uploadButton" id="secondToTHird"><span class="fas fa-cloud-upload-alt"></span> Send images</a>
@@ -150,6 +142,11 @@
 
 </div>
 
+<div class="shadowBackdrop">
+    <div class="message-area">
+        <span class="fas fa-check"></span>
+    </div>
+</div>
 
 <div class="hidden">
 			<span class="btn btn-success fileinput-button">
